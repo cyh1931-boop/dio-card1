@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>안양 디오르나인 | 회사보유분 잔여세대</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold-primary: #d4af37;
+      --gold-light: #fbebb8;
+      --gold-gradient: linear-gradient(135deg, #f5d77f 0%, #c59b27 100%);
+      --bg-dark: #0b0c10;
+      --card-bg: #14151b;
+      --card-border: rgba(212, 175, 55, 0.35);
+      --text-main: #ffffff;
+      --text-sub: #a5a8b6;
+      --red-point: #e63946;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Noto Sans KR', sans-serif;
+      line-height: 1.5;
+      word-break: keep-all;
+      overflow: hidden; /* 전체 창 고정 */
+    }
+
+    /* 1. 상단 고정 헤더 */
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 85px;
+      background: #111218;
+      border-bottom: 1px solid var(--card-border);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    }
+    .header-top {
+      height: 50px;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .header-logo span {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .header-call-btn {
+      background: var(--gold-gradient);
+      color: #0b0c10;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    /* 상단 고정 혜택 띠 */
+    .header-benefit-bar {
+      height: 35px;
+      background: linear-gradient(90deg, #990000 0%, #d4af37 100%);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.02em;
+    }
+
+    /* 2. 가운데 슬라이드(스크롤) 본문 영역 */
+    .inner-scroll-container {
+      position: absolute;
+      top: 85px;
+      bottom: 105px; /* 하단 혜택바+버튼바 높이만큼 여백 */
+      left: 0;
+      width: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 16px 14px 40px;
+    }
+    .inner-content {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* 빠른 상담 카드 3단 그리드 */
+    .quick-cta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .quick-btn {
+      background: #1a1c24;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px 6px;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .quick-btn .icon { font-size: 18px; margin-bottom: 4px; }
+    .quick-btn .title { font-size: 11px; font-weight: 700; color: var(--gold-light); }
+    .quick-btn.urgent {
+      background: rgba(230, 57, 70, 0.15);
+      border-color: var(--red-point);
+    }
+    .quick-btn.urgent .title { color: #ff6b6b; }
+
+    /* 메인 카드 스타일 */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 18px 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+    .badge-gold {
+      display: inline-block;
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 15px;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-bottom: 12px;
+    }
+
+    /* 이미지/비디오 미디어 박스 */
+    .media-box {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      border: 1px solid var(--card-border);
+      background: #000;
+    }
+    .media-box img, .media-box video {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* 태그 목록 */
+    .tag-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold-light);
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 4px;
+    }
+
+    /* 상담 신청 폼 */
+    .form-box {
+      background: #181922;
+      border: 1px solid var(--gold-primary);
+      border-radius: 12px;
+      padding: 20px 16px;
+      margin-bottom: 25px;
+    }
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 12px; color: var(--gold-light); margin-bottom: 5px; font-weight: 600; }
+    .form-input {
+      width: 100%;
+      padding: 12px;
+      background: #0d0e12;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+    .form-input:focus { border-color: var(--gold-primary); }
+    .submit-button {
+      width: 100%;
+      background: var(--gold-gradient);
+      color: #0b0c10;
+      border: none;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    /* 3. 하단 고정 푸터 */
+    .fixed-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 105px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.6);
+    }
+    /* 하단 고정 혜택 문구 바 */
+    .footer-benefit-bar {
+      height: 40px;
+      background: #1c1d25;
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 800;
+      gap: 6px;
+    }
+    .footer-benefit-bar .highlight { color: #ff5252; }
+    /* 하단 고정 3단 액션 버튼 */
+    .footer-buttons {
+      height: 65px;
+      background: #111218;
+      display: flex;
+    }
+    .footer-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-btn:last-child { border-right: none; }
+    .footer-btn.cta {
+      background: var(--gold-gradient);
+      color: #0b0c10;
+      font-weight: 800;
+    }
+    .footer-btn .icon { font-size: 16px; margin-bottom: 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- [상단 고정 1] 로고 + 전화 + 6천만원 혜택 바 -->
+  <header class="fixed-header">
+    <div class="header-top">
+      <div class="header-logo">
+        Dio.L9 <span>안양역 디오르나인</span>
+      </div>
+      <a href="tel:010-0000-0000" class="header-call-btn">
+        📞 전화상담
+      </a>
+    </div>
+    <div class="header-benefit-bar">
+      ★ 계약 즉시 6,000만원 상당 특별 혜택 제공 ★
+    </div>
+  </header>
+
+  <!-- [가운데 슬라이드/스크롤 본문] -->
+  <main class="inner-scroll-container">
+    <div class="inner-content">
+
+      <!-- 상단 빠른상담 3단 카드 -->
+      <div class="quick-cta-grid">
+        <a href="tel:010-0000-0000" class="quick-btn">
+          <span class="icon">📞</span>
+          <span class="title">전화상담</span>
+        </a>
+        <a href="#consulting-form" class="quick-btn">
+          <span class="icon">📅</span>
+          <span class="title">방문예약</span>
+        </a>
+        <a href="#consulting-form" class="quick-btn urgent">
+          <span class="icon">🔥</span>
+          <span class="title">마감임박 잔여호실</span>
+        </a>
+      </div>
+
+      <!-- 1. 메인 야경 영상/사진 카드 -->
+      <section class="section-card">
+        <span class="badge-gold">EXCLUSIVE RESIDENCE</span>
+        <h2 class="card-title">디오르나인 안양역 회사보유분</h2>
+        <p class="card-desc">밤을 밝히는 안양의 새로운 시그니처 하이엔드 랜드마크</p>
+        <div class="media-box">
+          <!-- 캡컷에서 제작한 5초 야경 영상 -->
+          <video autoplay loop muted playsinline poster="https://i.postimg.cc/jSZSwKrc/maein-yagyeongdijain.jpg">
+            <source src="hero_bg.mp4" type="video/mp4">
+            <img src="https://i.postimg.cc/jSZSwKrc/maein-yagyeongdijain.jpg" alt="디오르나인 안양역 메인 야경">
+          </video>
+        </div>
+        <div class="tag-wrap">
+          <span class="tag">회사보유분 한정</span>
+          <span class="tag">계약즉시 입주</span>
+          <span class="tag">84㎡ 시그니처</span>
+        </div>
+      </section>
+
+      <!-- 2. 로고 오프닝 모션 영상 카드 -->
+      <section class="section-card">
+        <span class="badge-gold">CINEMATIC PREVIEW</span>
+        <h2 class="card-title">프라이빗 라이프의 문이 열리다</h2>
+        <p class="card-desc">지상 66m 높이에서 펼쳐지는 압도적인 파노라마 조망</p>
+        <div class="media-box">
+          <video autoplay loop muted playsinline>
+            <source src="opening_door.mp4" type="video/mp4">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="디오르나인 전경">
+          </video>
+        </div>
+        <div class="tag-wrap">
+          <span class="tag">트리플 타워</span>
+          <span class="tag">최고 25층</span>
+          <span class="tag">하이엔드 레지던스</span>
+        </div>
+      </section>
+
+      <!-- 3. 인피니티풀 카드 -->
+      <section class="section-card">
+        <span class="badge-gold">AQUA FLEX</span>
+        <h2 class="card-title">지상 66m 스카이 인피니티풀</h2>
+        <p class="card-desc">도심 위에서 즐기는 프라이빗 노천풀과 자쿠지 휴양 라이프</p>
+        <div class="media-box">
+          <img src="card_pool.jpg" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80'" alt="스카이 인피니티풀">
+        </div>
+        <div class="tag-wrap">
+          <span class="tag">야외 인피니티풀</span>
+          <span class="tag">온탕 자쿠지</span>
+          <span class="tag">카바나 선베드</span>
+        </div>
+      </section>
+
+      <!-- 4. 교통 및 미래가치 카드 -->
+      <section class="section-card">
+        <span class="badge-gold">LOCATION & TRAFFIC</span>
+        <h2 class="card-title">안양역·월판선 더블역세권</h2>
+        <p class="card-desc">지하철 1호선과 월곶~판교선(예정)으로 판교 10분대, 강남 30분대 연결</p>
+        <div class="media-box">
+          <img src="card_traffic.jpg" onerror="this.src='https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80'" alt="더블역세권 교통망">
+        </div>
+        <div class="tag-wrap">
+          <span class="tag">1호선 안양역</span>
+          <span class="tag">월곶-판교선 직결</span>
+          <span class="tag">사통팔달 광역교통</span>
+        </div>
+      </section>
+
+      <!-- 5. 유로모빌 명품 주방 카드 -->
+      <section class="section-card">
+        <span class="badge-gold">PREMIUM INTERIOR</span>
+        <h2 class="card-title">이탈리아 명품 유로모빌 주방</h2>
+        <p class="card-desc">세계적인 명품 주방가구 유로모빌(Euromobil) 빌트인과 천연 대리석 마감</p>
+        <div class="media-box">
+          <img src="card_kitchen.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'" alt="유로모빌 주방 인테리어">
+        </div>
+        <div class="tag-wrap">
+          <span class="tag">유로모빌 빌트인</span>
+          <span class="tag">광폭 거실 설계</span>
+          <span class="tag">삼성 SmartThings 연동</span>
+        </div>
+      </section>
+
+      <!-- 6. 84A 평면 설계 카드 -->
+      <section class="section-card">
+        <span class="badge-gold">UNIT PLAN</span>
+        <h2 class="card-title">84A 타입 혁신 평면 설계</h2>
+        <p class="card-desc">채광과 개방감을 극대화한 4Bay 판상형 구조 및 순환 팬트리 동선</p>
+        <div class="media-box">
+          <img src="card_type84.jpg" onerror="this.src='https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=800&q=80'" alt="84A 타입 평면도">
+        </div>
+        <div class="tag-wrap">
+          <span class="tag">4Bay 판상형</span>
+          <span class="tag">순환형 주방팬트리</span>
+          <span class="tag">호텔식 건식욕실</span>
+        </div>
+      </section>
+
+      <!-- 7. 컨시어지 및 어메니티 카드 -->
+      <section class="section-card">
+        <span class="badge-gold">VIP AMENITY</span>
+        <h2 class="card-title">호텔급 컨시어지 & 라운지</h2>
+        <p class="card-desc">입주민만을 위한 버틀러 케어 서비스, 실내 스크린골프, 피트니스 클럽</p>
+        <div class="media-box">
+          <img src="card_amenity.jpg" onerror="this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80'" alt="컨시어지 라운지">
+        </div>
+        <div class="tag-wrap">
+          <span class="tag">호텔식 컨시어지</span>
+          <span class="tag">GDR 스크린골프</span>
+          <span class="tag">프라이빗 비즈니스룸</span>
+        </div>
+      </section>
+
+      <!-- 8. VIP 상담 신청 폼 -->
+      <section class="form-box" id="consulting-form">
+        <div style="font-size: 11px; color: var(--gold-primary); text-align: center; font-weight: 700; margin-bottom: 4px;">VIP PRIVATE CONSULTING</div>
+        <h3 style="font-size: 19px; text-align: center; color: #fff; margin-bottom: 8px;">잔여세대 특별상담 신청</h3>
+        <p style="font-size: 12px; color: var(--text-sub); text-align: center; margin-bottom: 18px;">
+          회사보유분 잔여호실 분양가 및 모델하우스(홍보관) 방문 예약
+        </p>
+
+        <form action="#" method="POST" onsubmit="alert('상담 신청이 접수되었습니다. 담당자가 곧 연락드리겠습니다.'); return false;">
+          <div class="form-group">
+            <label>성명</label>
+            <input type="text" class="form-input" placeholder="성함을 입력하세요" required>
+          </div>
+          <div class="form-group">
+            <label>연락처</label>
+            <input type="tel" class="form-input" placeholder="010-0000-0000" required>
+          </div>
+          <div class="form-group">
+            <label>관심 타입</label>
+            <select class="form-input">
+              <option>84A Type (판상형 선호)</option>
+              <option>84C Type (타워형 조망)</option>
+              <option>84H Type (테라스 희소)</option>
+              <option>회사보유분 전체 상담</option>
+            </select>
+          </div>
+          <div style="font-size: 11px; color: var(--text-sub); margin: 12px 0; display: flex; align-items: center; gap: 6px;">
+            <input type="checkbox" id="agree" checked required>
+            <label for="agree">개인정보 수집 및 분양상담 안내에 동의합니다.</label>
+          </div>
+          <button type="submit" class="submit-button">잔여호실 VIP 상담 예약하기</button>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- [하단 고정 2] 혜택 문구 + 3단 액션 버튼 -->
+  <footer class="fixed-footer">
+    <div class="footer-benefit-bar">
+      <span>★ 1천만원 계약 가능</span> · <span class="highlight">시세대비 4억 이상 저렴!</span> ★
+    </div>
+    <div class="footer-buttons">
+      <a href="tel:010-0000-0000" class="footer-btn">
+        <span class="icon">📞</span>
+        <span>전화상담</span>
+      </a>
+      <a href="#consulting-form" class="footer-btn">
+        <span class="icon">📅</span>
+        <span>방문예약</span>
+      </a>
+      <a href="#consulting-form" class="footer-btn cta">
+        <span class="icon">📋</span>
+        <span>관심고객등록</span>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
