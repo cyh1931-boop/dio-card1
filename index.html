@@ -18,6 +18,8 @@
       --text-main: #ffffff;
       --text-sub: #a5a8b6;
       --red-point: #e63946;
+      --kakao-yellow: #fee500;
+      --kakao-brown: #3c1e1e;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
@@ -144,9 +146,15 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      transition: all 0.2s ease;
     }
     .quick-btn .icon { font-size: 18px; margin-bottom: 4px; }
     .quick-btn .title { font-size: 11px; font-weight: 700; color: var(--gold-light); }
+    .quick-btn.kakao {
+      background: rgba(254, 229, 0, 0.12);
+      border-color: rgba(254, 229, 0, 0.5);
+    }
+    .quick-btn.kakao .title { color: #fee500; }
     .quick-btn.urgent {
       background: rgba(230, 57, 70, 0.15);
       border-color: var(--red-point);
@@ -241,6 +249,23 @@
       cursor: pointer;
       margin-top: 10px;
     }
+    .kakao-direct-btn {
+      width: 100%;
+      background: var(--kakao-yellow);
+      color: var(--kakao-brown);
+      border: none;
+      padding: 14px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+    }
 
     /* 3. 하단 고정 푸터 */
     .fixed-footer {
@@ -291,6 +316,11 @@
       color: #0b0c10;
       font-weight: 800;
     }
+    .footer-btn.kakao {
+      background: #fee500;
+      color: #3c1e1e;
+      font-weight: 800;
+    }
     .footer-btn .icon { font-size: 16px; margin-bottom: 2px; }
   </style>
 </head>
@@ -308,8 +338,8 @@
       </div>
       <div class="header-controls">
         <button class="bgm-toggle-btn" id="bgmBtn" onclick="toggleBGM()" title="음악 켜기/끄기">🎵</button>
-        <a href="tel:010-0000-0000" class="header-call-btn">
-          📞 전화상담
+        <a href="tel:1544-1987" class="header-call-btn">
+          📞 1544-1987
         </a>
       </div>
     </div>
@@ -324,15 +354,15 @@
 
       <!-- 빠른 상담 3단 카드 -->
       <div class="quick-cta-grid">
-        <a href="tel:010-0000-0000" class="quick-btn">
+        <a href="tel:1544-1987" class="quick-btn">
           <span class="icon">📞</span>
-          <span class="title">전화상담</span>
+          <span class="title">전화상담 (1544)</span>
         </a>
-        <a href="#consulting-form" class="quick-btn">
-          <span class="icon">📅</span>
-          <span class="title">방문예약</span>
+        <a href="https://open.kakao.com/o/spKjChQi" target="_blank" class="quick-btn kakao">
+          <span class="icon">💬</span>
+          <span class="title">1:1 카톡 예약</span>
         </a>
-        <a href="#consulting-form" class="quick-btn urgent">
+        <a href="https://open.kakao.com/o/spKjChQi" target="_blank" class="quick-btn urgent">
           <span class="icon">🔥</span>
           <span class="title">마감임박 잔여호실</span>
         </a>
@@ -428,7 +458,7 @@
         </div>
       </section>
 
-      <!-- 6. 인테리어 카드 (사진 card_kitchen.jpg 고정 표시) -->
+      <!-- 6. 인테리어 카드 (사진 card_kitchen.jpg) -->
       <section class="section-card">
         <span class="badge-gold">PREMIUM INTERIOR</span>
         <h2 class="card-title">이탈리아 명품 유로모빌 주방</h2>
@@ -466,18 +496,18 @@
           실입주 부담 완화 취득세 지원 상담 및 홍보관 방문 예약
         </p>
 
-        <form action="#" method="POST" onsubmit="alert('VIP 상담 신청이 정상 접수되었습니다. 담당자가 빠르게 연락드리겠습니다.'); return false;">
+        <form onsubmit="handleFormSubmit(event)">
           <div class="form-group">
             <label>성명</label>
-            <input type="text" class="form-input" placeholder="성함을 입력하세요" required>
+            <input type="text" id="custName" class="form-input" placeholder="성함을 입력하세요" required>
           </div>
           <div class="form-group">
             <label>연락처</label>
-            <input type="tel" class="form-input" placeholder="010-0000-0000" required>
+            <input type="tel" id="custPhone" class="form-input" placeholder="010-0000-0000" required>
           </div>
           <div class="form-group">
             <label>관심 타입</label>
-            <select class="form-input">
+            <select id="custType" class="form-input">
               <option>84A Type (판상형 선호)</option>
               <option>84C Type (타워형 조망)</option>
               <option>84H Type (테라스 희소)</option>
@@ -488,7 +518,10 @@
             <input type="checkbox" id="agree" checked required>
             <label for="agree">개인정보 수집 및 분양상담 안내에 동의합니다.</label>
           </div>
-          <button type="submit" class="submit-button">잔여호실 VIP 상담 예약하기</button>
+          <button type="submit" class="submit-button">상담 신청 후 카카오톡 1:1 연결</button>
+          <a href="https://open.kakao.com/o/spKjChQi" target="_blank" class="kakao-direct-btn">
+            <span>💬 카카오톡 오픈채팅 바로 입장하기</span>
+          </a>
         </form>
       </section>
 
@@ -501,13 +534,13 @@
       <span>★ 1천만원 계약 가능</span> · <span class="highlight">시세대비 4억 이상 저렴!</span> ★
     </div>
     <div class="footer-buttons">
-      <a href="tel:010-0000-0000" class="footer-btn">
+      <a href="tel:1544-1987" class="footer-btn">
         <span class="icon">📞</span>
         <span>전화상담</span>
       </a>
-      <a href="#consulting-form" class="footer-btn">
-        <span class="icon">📅</span>
-        <span>방문예약</span>
+      <a href="https://open.kakao.com/o/spKjChQi" target="_blank" class="footer-btn kakao">
+        <span class="icon">💬</span>
+        <span>카톡예약</span>
       </a>
       <a href="#consulting-form" class="footer-btn cta">
         <span class="icon">📋</span>
@@ -517,6 +550,16 @@
   </footer>
 
   <script>
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value;
+      const phone = document.getElementById('custPhone').value;
+      const type = document.getElementById('custType').value;
+
+      alert(name + ' 고객님, 방문예약 신청이 접수되었습니다!\n담당자와 실시간 1:1 상담을 위해 카카오톡 오픈채팅방으로 이동합니다.');
+      window.location.href = 'https://open.kakao.com/o/spKjChQi';
+    }
+
     let bgmStarted = false;
     function startBGMOnce() {
       if (!bgmStarted) {
