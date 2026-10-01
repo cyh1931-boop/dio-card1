@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>디오르나인 총괄1본부 부장 윤석후 | 모바일 명함</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold-main: #d4af37;
+      --gold-light: #fbebb8;
+      --gold-gradient: linear-gradient(135deg, #f9e7b2 0%, #d4af37 50%, #9a7822 100%);
+      --bg-dark: #0a0b0e;
+      --card-bg: #14151c;
+      --card-inner: #1b1d27;
+      --border-gold: rgba(212, 175, 55, 0.4);
+      --text-white: #ffffff;
+      --text-gray: #a8abb8;
+      --highlight-red: #ff5252;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Noto Sans KR', sans-serif;
+      line-height: 1.6;
+      word-break: keep-all;
+      padding-bottom: 40px;
+    }
+    .wrapper {
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    /* 1. 상단 골드 텍스트 디지털 명함 카드 */
+    .digital-card {
+      background: linear-gradient(145deg, #181924 0%, #101117 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      padding: 24px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .digital-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .card-brand {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .brand-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .dept-badge {
+      font-size: 11px;
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .card-person {
+      margin-bottom: 16px;
+    }
+    .person-title {
+      font-size: 13px;
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .person-name {
+      font-size: 26px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 0.05em;
+    }
+    .person-name span {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-left: 6px;
+    }
+    .card-details {
+      font-size: 12px;
+      color: var(--text-gray);
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .detail-item .icon {
+      color: var(--gold-main);
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .card-btn {
+      background: #20222f;
+      border: 1px solid var(--border-gold);
+      border-radius: 8px;
+      padding: 11px 0;
+      text-decoration: none;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .card-btn.primary {
+      background: var(--gold-gradient);
+      color: #0b0c10;
+      font-weight: 900;
+      border: none;
+    }
+
+    /* 2. 본문: 안양 디오르나인 핵심 프리미엄 브리핑 */
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .section-subtitle {
+      font-size: 11px;
+      color: var(--gold-main);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+    }
+    .section-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 20px 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      color: #e0e2ec;
+      border-bottom: 1px dashed rgba(255,255,255,0.08);
+      padding-bottom: 10px;
+    }
+    .feature-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .feature-bullet {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold-main);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .feature-text strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .feature-text .highlight {
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+    .feature-subdesc {
+      font-size: 11.5px;
+      color: var(--text-gray);
+      margin-top: 2px;
+    }
+
+    /* 3. 하단 공식 홈페이지 링크 CTA */
+    .gallery-cta-box {
+      background: linear-gradient(145deg, #1d1b13 0%, #12131a 100%);
+      border: 1px solid var(--gold-main);
+      border-radius: 14px;
+      padding: 22px 18px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(212,175,55,0.15);
+    }
+    .cta-eyebrow {
+      font-size: 11px;
+      color: var(--gold-light);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .cta-heading {
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: var(--gold-gradient);
+      color: #0b0c10;
+      font-size: 15px;
+      font-weight: 900;
+      padding: 15px 0;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(212,175,55,0.4);
+      transition: transform 0.2s;
+    }
+    .cta-btn:active {
+      transform: scale(0.98);
+    }
+    .cta-note {
+      font-size: 11px;
+      color: var(--text-gray);
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- 1. 골드 텍스트 디지털 명함 카드 -->
+    <div class="digital-card">
+      <div class="card-brand">
+        <div class="brand-logo">Dio.L9</div>
+        <div class="dept-badge" id="cardDept">디오르나인 총괄1본부</div>
+      </div>
+      <div class="card-person">
+        <div class="person-title">분양상담 총괄책임</div>
+        <div class="person-name">
+          <span id="cardName">윤석후</span>
+          <span id="cardTitle">부장</span>
+        </div>
+      </div>
+      <div class="card-details">
+        <div class="detail-item">
+          <span class="icon">📞</span>
+          <span id="cardPhoneText">010-9236-3325</span>
+        </div>
+        <div class="detail-item">
+          <span class="icon">📍</span>
+          <span>경기도 만안구 안양로243 (1BL. 3층홍보관)</span>
+        </div>
+      </div>
+      <div class="card-actions">
+        <a href="tel:010-9236-3325" id="callBtn" class="card-btn primary">
+          <span>📞 전화 걸기</span>
+        </a>
+        <a href="sms:010-9236-3325" id="smsBtn" class="card-btn">
+          <span>💬 문자 상담</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. 안양 디오르나인 핵심 프리미엄 브리핑 -->
+    <div class="section-title-wrap">
+      <div class="section-subtitle">PREMIUM OVERVIEW</div>
+      <h2 class="section-title">디오르나인 안양역 핵심 특장점</h2>
+    </div>
+
+    <div class="feature-card">
+      <ul class="feature-list">
+        <li class="feature-item">
+          <span class="feature-bullet">1</span>
+          <div class="feature-text">
+            <strong>시행사 보유분 특별분양</strong>
+            <div class="feature-subdesc">회사보유 로얄 호실 선착순 동·호지정 계약 진행</div>
+          </div>
+        </li>
+        <li class="feature-item">
+          <span class="feature-bullet">2</span>
+          <div class="feature-text">
+            <strong>지하 6층 ~ 지상 25층 3개동 540세대</strong>
+            <div class="feature-subdesc">안양 중심을 대표하는 압도적 랜드마크 스케일</div>
+          </div>
+        </li>
+        <li class="feature-item">
+          <span class="feature-bullet">3</span>
+          <div class="feature-text">
+            <span class="highlight">선호도 높은 84㎡ 즉시입주 가능</span>
+            <div class="feature-subdesc">준공 완료 단지로 대기 없이 즉시 입주 협의 가능</div>
+          </div>
+        </li>
+        <li class="feature-item">
+          <span class="feature-bullet">4</span>
+          <div class="feature-text">
+            <strong>월판선 도보 3분 (1호선 안양역 환승)</strong>
+            <div class="feature-subdesc">판교 10분대 직통 및 강남 30분대 초특급 더블역세권</div>
+          </div>
+        </li>
+        <li class="feature-item">
+          <span class="feature-bullet">5</span>
+          <div class="feature-text">
+            <span class="highlight" style="color: #ff6b6b;">주변 시세 대비 4억 이상 저렴</span>
+            <div class="feature-subdesc">안양 역세권 신축 대비 파격적인 분양가 및 안전마진 확보</div>
+          </div>
+        </li>
+        <li class="feature-item">
+          <span class="feature-bullet">6</span>
+          <div class="feature-text">
+            <strong>고급 하이엔드 커뮤니티 완비</strong>
+            <div class="feature-subdesc">3층 야외 수영장, GDR 스크린골프, 남여 사우나, 피트니스 등</div>
+          </div>
+        </li>
+        <li class="feature-item">
+          <span class="feature-bullet">7</span>
+          <div class="feature-text">
+            <strong>실거주 의무 없음 · 전월세 투자 가능</strong>
+            <div class="feature-subdesc">입주 부담 없이 전세/월세 임대수익 즉시 실현 가능</div>
+          </div>
+        </li>
+        <li class="feature-item">
+          <span class="feature-bullet">8</span>
+          <div class="feature-text">
+            <strong>병원, 마트, 관공서 등 편의시설 5분 거리</strong>
+            <div class="feature-subdesc">엔터식스, 롯데백화점(상권), 안양일번가, 안양샘병원 등 인프라 밀집</div>
+          </div>
+        </li>
+        <li class="feature-item">
+          <span class="feature-bullet">9</span>
+          <div class="feature-text">
+            <strong>비규제지역 대출 최대 70%까지 가능</strong>
+            <div class="feature-subdesc">완화된 대출 조건으로 실입주 자금 부담 최소화</div>
+          </div>
+        </li>
+        <li class="feature-item">
+          <span class="feature-bullet">10</span>
+          <div class="feature-text">
+            <span class="highlight">계약금 3,000만원 정액제</span>
+            <div class="feature-subdesc">초기 자금 부담을 획기적으로 낮춘 특별 계약 조건</div>
+          </div>
+        </li>
+        <li class="feature-item">
+          <span class="feature-bullet">11</span>
+          <div class="feature-text">
+            <span class="highlight">시스템에어컨 등 9가지 유상옵션 무상설치</span>
+            <div class="feature-subdesc">수천만원 상당의 필수 가전·가구 옵션 무상 제공 혜택</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 3. 맨 아래 공식 영상 갤러리 바로가기 버튼 -->
+    <div class="gallery-cta-box">
+      <div class="cta-eyebrow">OFFICIAL DIGITAL GALLERY</div>
+      <div class="cta-heading">실제 수영장·야경·인테리어 영상 보기</div>
+      <a href="index.html" class="cta-btn">
+        ▶ 디오르나인 공식 갤러리 둘러보기
+      </a>
+      <div class="cta-note">
+        ※ 3층 야외 수영장, 골프존, 명품 주방 등 실물 영상 확인
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // URL 매개변수로 다른 직원 정보도 즉시 변경 가능 (?name=홍길동&title=과장&tel=01000000000)
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    const title = params.get('title');
+    const tel = params.get('tel');
+    const dept = params.get('dept');
+
+    if (name) document.getElementById('cardName').textContent = name;
+    if (title) document.getElementById('cardTitle').textContent = title;
+    if (dept) document.getElementById('cardDept').textContent = dept;
+    if (tel) {
+      document.getElementById('cardPhoneText').textContent = tel;
+      document.getElementById('callBtn').setAttribute('href', 'tel:' + tel);
+      document.getElementById('smsBtn').setAttribute('href', 'sms:' + tel);
+    }
+  </script>
+
+</body>
+</html>
