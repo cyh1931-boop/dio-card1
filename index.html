@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>안양 디오르나인 | 회사보유분 잔여세대</title>
+  <title>안양 디오르나인 | 회사보유분 특별상담</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
       font-family: 'Noto Sans KR', sans-serif;
       line-height: 1.5;
       word-break: keep-all;
-      overflow: hidden; /* 전체 창 고정 */
+      overflow: hidden;
     }
 
     /* 1. 상단 고정 헤더 */
@@ -68,6 +68,24 @@
       font-weight: 700;
       color: #fff;
     }
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bgm-toggle-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #1c1d25;
+      border: 1px solid var(--card-border);
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+    }
     .header-call-btn {
       background: var(--gold-gradient);
       color: #0b0c10;
@@ -80,24 +98,23 @@
       align-items: center;
       gap: 4px;
     }
-    /* 상단 고정 혜택 띠 */
     .header-benefit-bar {
       height: 35px;
-      background: linear-gradient(90deg, #990000 0%, #d4af37 100%);
+      background: linear-gradient(90deg, #8a0e17 0%, #c59b27 100%);
       color: #ffffff;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
       letter-spacing: 0.02em;
     }
 
-    /* 2. 가운데 슬라이드(스크롤) 본문 영역 */
+    /* 2. 가운데 슬라이드 본문 영역 */
     .inner-scroll-container {
       position: absolute;
       top: 85px;
-      bottom: 105px; /* 하단 혜택바+버튼바 높이만큼 여백 */
+      bottom: 105px;
       left: 0;
       width: 100%;
       overflow-y: auto;
@@ -109,7 +126,6 @@
       margin: 0 auto;
     }
 
-    /* 빠른 상담 카드 3단 그리드 */
     .quick-cta-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -137,7 +153,6 @@
     }
     .quick-btn.urgent .title { color: #ff6b6b; }
 
-    /* 메인 카드 스타일 */
     .section-card {
       background: var(--card-bg);
       border: 1px solid rgba(255,255,255,0.08);
@@ -168,7 +183,6 @@
       margin-bottom: 12px;
     }
 
-    /* 이미지/비디오 미디어 박스 */
     .media-box {
       width: 100%;
       border-radius: 8px;
@@ -176,6 +190,7 @@
       margin-bottom: 12px;
       border: 1px solid var(--card-border);
       background: #000;
+      position: relative;
     }
     .media-box img, .media-box video {
       width: 100%;
@@ -184,7 +199,6 @@
       object-fit: cover;
     }
 
-    /* 태그 목록 */
     .tag-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
     .tag {
       background: rgba(255,255,255,0.05);
@@ -195,7 +209,6 @@
       border-radius: 4px;
     }
 
-    /* 상담 신청 폼 */
     .form-box {
       background: #181922;
       border: 1px solid var(--gold-primary);
@@ -241,7 +254,6 @@
       flex-direction: column;
       box-shadow: 0 -4px 15px rgba(0,0,0,0.6);
     }
-    /* 하단 고정 혜택 문구 바 */
     .footer-benefit-bar {
       height: 40px;
       background: #1c1d25;
@@ -256,7 +268,6 @@
       gap: 6px;
     }
     .footer-benefit-bar .highlight { color: #ff5252; }
-    /* 하단 고정 3단 액션 버튼 */
     .footer-buttons {
       height: 65px;
       background: #111218;
@@ -285,26 +296,33 @@
 </head>
 <body>
 
-  <!-- [상단 고정 1] 로고 + 전화 + 6천만원 혜택 바 -->
+  <audio id="bgmAudio" loop preload="auto">
+    <source src="bgm.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- [상단 고정 헤더] -->
   <header class="fixed-header">
     <div class="header-top">
       <div class="header-logo">
         Dio.L9 <span>안양역 디오르나인</span>
       </div>
-      <a href="tel:010-0000-0000" class="header-call-btn">
-        📞 전화상담
-      </a>
+      <div class="header-controls">
+        <button class="bgm-toggle-btn" id="bgmBtn" onclick="toggleBGM()" title="음악 켜기/끄기">🎵</button>
+        <a href="tel:010-0000-0000" class="header-call-btn">
+          📞 전화상담
+        </a>
+      </div>
     </div>
     <div class="header-benefit-bar">
-      ★ 계약 즉시 6,000만원 상당 특별 혜택 제공 ★
+      ★ 디오르나인 안양역 계약 즉시 한정 특별혜택 제공 ★
     </div>
   </header>
 
-  <!-- [가운데 슬라이드/스크롤 본문] -->
-  <main class="inner-scroll-container">
+  <!-- [가운데 슬라이드 본문] -->
+  <main class="inner-scroll-container" onclick="startBGMOnce()">
     <div class="inner-content">
 
-      <!-- 상단 빠른상담 3단 카드 -->
+      <!-- 빠른 상담 3단 카드 -->
       <div class="quick-cta-grid">
         <a href="tel:010-0000-0000" class="quick-btn">
           <span class="icon">📞</span>
@@ -320,95 +338,121 @@
         </a>
       </div>
 
-      <!-- 1. 메인 야경 영상/사진 카드 -->
+      <!-- 1. 메인 야경 영상 카드 (hero_bg.mp4) -->
       <section class="section-card">
         <span class="badge-gold">EXCLUSIVE RESIDENCE</span>
         <h2 class="card-title">디오르나인 안양역 회사보유분</h2>
         <p class="card-desc">밤을 밝히는 안양의 새로운 시그니처 하이엔드 랜드마크</p>
         <div class="media-box">
-          <!-- 캡컷에서 제작한 5초 야경 영상 -->
           <video autoplay loop muted playsinline poster="https://i.postimg.cc/jSZSwKrc/maein-yagyeongdijain.jpg">
             <source src="hero_bg.mp4" type="video/mp4">
             <img src="https://i.postimg.cc/jSZSwKrc/maein-yagyeongdijain.jpg" alt="디오르나인 안양역 메인 야경">
           </video>
         </div>
         <div class="tag-wrap">
-          <span class="tag">회사보유분 한정</span>
-          <span class="tag">계약즉시 입주</span>
+          <span class="tag">회사보유분 특별공급</span>
+          <span class="tag">준공완료 즉시입주</span>
           <span class="tag">84㎡ 시그니처</span>
         </div>
       </section>
 
-      <!-- 2. 로고 오프닝 모션 영상 카드 -->
+      <!-- 2. 폭죽 전경 영상 카드 (fireworks.mp4) -->
       <section class="section-card">
-        <span class="badge-gold">CINEMATIC PREVIEW</span>
-        <h2 class="card-title">프라이빗 라이프의 문이 열리다</h2>
-        <p class="card-desc">지상 66m 높이에서 펼쳐지는 압도적인 파노라마 조망</p>
+        <span class="badge-gold">SIGNATURE LANDMARK</span>
+        <h2 class="card-title">안양의 밤을 수놓는 시그니처</h2>
+        <p class="card-desc">트리플 타워 최고 25층 랜드마크 파노라마 조망</p>
         <div class="media-box">
-          <video autoplay loop muted playsinline>
-            <source src="opening_door.mp4" type="video/mp4">
+          <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80">
+            <source src="fireworks.mp4" type="video/mp4">
             <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="디오르나인 전경">
           </video>
         </div>
         <div class="tag-wrap">
-          <span class="tag">트리플 타워</span>
-          <span class="tag">최고 25층</span>
-          <span class="tag">하이엔드 레지던스</span>
+          <span class="tag">25층 트리플타워</span>
+          <span class="tag">축제 같은 야경 조망</span>
+          <span class="tag">안양 최초 하이엔드</span>
         </div>
       </section>
 
-      <!-- 3. 인피니티풀 카드 -->
+      <!-- 3. 수영장 카드 (pool_motion.mp4 또는 card_pool.jpg) -->
       <section class="section-card">
         <span class="badge-gold">AQUA FLEX</span>
-        <h2 class="card-title">지상 66m 스카이 인피니티풀</h2>
-        <p class="card-desc">도심 위에서 즐기는 프라이빗 노천풀과 자쿠지 휴양 라이프</p>
+        <h2 class="card-title">3층 프라이빗 아쿠아 플렉스 & 인피니티풀</h2>
+        <p class="card-desc">야외 테라스에서 즐기는 프라이빗 노천풀과 자쿠지 힐링 라이프</p>
         <div class="media-box">
-          <img src="card_pool.jpg" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80'" alt="스카이 인피니티풀">
+          <video autoplay loop muted playsinline poster="card_pool.jpg">
+            <source src="pool_motion.mp4" type="video/mp4">
+            <img src="card_pool.jpg" onerror="this.src='https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80'" alt="3층 스카이 인피니티풀">
+          </video>
         </div>
         <div class="tag-wrap">
-          <span class="tag">야외 인피니티풀</span>
-          <span class="tag">온탕 자쿠지</span>
+          <span class="tag">3층 야외 인피니티풀</span>
+          <span class="tag">따뜻한 온탕 자쿠지</span>
           <span class="tag">카바나 선베드</span>
         </div>
       </section>
 
-      <!-- 4. 교통 및 미래가치 카드 -->
+      <!-- 4. 커뮤니티 3단 하이라이트 영상 (amenity_highlight.mp4) -->
       <section class="section-card">
-        <span class="badge-gold">LOCATION & TRAFFIC</span>
-        <h2 class="card-title">안양역·월판선 더블역세권</h2>
-        <p class="card-desc">지하철 1호선과 월곶~판교선(예정)으로 판교 10분대, 강남 30분대 연결</p>
+        <span class="badge-gold">COMMUNITY HIGHLIGHT</span>
+        <h2 class="card-title">호텔급 어메니티 원스톱 라이프</h2>
+        <p class="card-desc">GDR 골프존, 하이엔드 피트니스, 사계절 키즈풀 올인원</p>
         <div class="media-box">
-          <img src="card_traffic.jpg" onerror="this.src='https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80'" alt="더블역세권 교통망">
+          <video autoplay loop muted playsinline poster="card_amenity.jpg">
+            <source src="amenity_highlight.mp4" type="video/mp4">
+            <img src="card_amenity.jpg" alt="커뮤니티 시설">
+          </video>
         </div>
         <div class="tag-wrap">
-          <span class="tag">1호선 안양역</span>
-          <span class="tag">월곶-판교선 직결</span>
-          <span class="tag">사통팔달 광역교통</span>
+          <span class="tag">GDR 스크린골프</span>
+          <span class="tag">고품격 피트니스</span>
+          <span class="tag">패밀리 키즈풀</span>
         </div>
       </section>
 
-      <!-- 5. 유로모빌 명품 주방 카드 -->
+      <!-- 5. 교통 카드 (card_traffic.mp4) -->
+      <section class="section-card">
+        <span class="badge-gold">RAPID TRAFFIC</span>
+        <h2 class="card-title">안양역·월판선 쾌속 더블역세권</h2>
+        <p class="card-desc">1호선 안양역과 월곶~판교선(예정)으로 판교 10분대 직통</p>
+        <div class="media-box">
+          <video autoplay loop muted playsinline poster="card_traffic.jpg">
+            <source src="card_traffic.mp4" type="video/mp4">
+            <img src="card_traffic.jpg" alt="더블역세권 교통망">
+          </video>
+        </div>
+        <div class="tag-wrap">
+          <span class="tag">1호선 안양역 초역세권</span>
+          <span class="tag">월판선 판교 직통</span>
+          <span class="tag">강남 30분대 진입</span>
+        </div>
+      </section>
+
+      <!-- 6. 인테리어 카드 (card_kitchen.mp4) -->
       <section class="section-card">
         <span class="badge-gold">PREMIUM INTERIOR</span>
         <h2 class="card-title">이탈리아 명품 유로모빌 주방</h2>
-        <p class="card-desc">세계적인 명품 주방가구 유로모빌(Euromobil) 빌트인과 천연 대리석 마감</p>
+        <p class="card-desc">명품 가구 유로모빌(Euromobil) 빌트인과 친환경 최고급 강마루 시공</p>
         <div class="media-box">
-          <img src="card_kitchen.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'" alt="유로모빌 주방 인테리어">
+          <video autoplay loop muted playsinline poster="card_kitchen.jpg">
+            <source src="card_kitchen.mp4" type="video/mp4">
+            <img src="card_kitchen.jpg" alt="유로모빌 주방 인테리어">
+          </video>
         </div>
         <div class="tag-wrap">
-          <span class="tag">유로모빌 빌트인</span>
-          <span class="tag">광폭 거실 설계</span>
+          <span class="tag">이탈리아 유로모빌</span>
+          <span class="tag">친환경 최고급 강마루</span>
           <span class="tag">삼성 SmartThings 연동</span>
         </div>
       </section>
 
-      <!-- 6. 84A 평면 설계 카드 -->
+      <!-- 7. 84A 평면 설계 카드 (card_type84.jpg) -->
       <section class="section-card">
-        <span class="badge-gold">UNIT PLAN</span>
+        <span class="badge-gold">SIGNATURE PLAN</span>
         <h2 class="card-title">84A 타입 혁신 평면 설계</h2>
         <p class="card-desc">채광과 개방감을 극대화한 4Bay 판상형 구조 및 순환 팬트리 동선</p>
         <div class="media-box">
-          <img src="card_type84.jpg" onerror="this.src='https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=800&q=80'" alt="84A 타입 평면도">
+          <img src="card_type84.jpg" alt="84A 타입 평면도">
         </div>
         <div class="tag-wrap">
           <span class="tag">4Bay 판상형</span>
@@ -417,30 +461,15 @@
         </div>
       </section>
 
-      <!-- 7. 컨시어지 및 어메니티 카드 -->
-      <section class="section-card">
-        <span class="badge-gold">VIP AMENITY</span>
-        <h2 class="card-title">호텔급 컨시어지 & 라운지</h2>
-        <p class="card-desc">입주민만을 위한 버틀러 케어 서비스, 실내 스크린골프, 피트니스 클럽</p>
-        <div class="media-box">
-          <img src="card_amenity.jpg" onerror="this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80'" alt="컨시어지 라운지">
-        </div>
-        <div class="tag-wrap">
-          <span class="tag">호텔식 컨시어지</span>
-          <span class="tag">GDR 스크린골프</span>
-          <span class="tag">프라이빗 비즈니스룸</span>
-        </div>
-      </section>
-
       <!-- 8. VIP 상담 신청 폼 -->
       <section class="form-box" id="consulting-form">
         <div style="font-size: 11px; color: var(--gold-primary); text-align: center; font-weight: 700; margin-bottom: 4px;">VIP PRIVATE CONSULTING</div>
         <h3 style="font-size: 19px; text-align: center; color: #fff; margin-bottom: 8px;">잔여세대 특별상담 신청</h3>
         <p style="font-size: 12px; color: var(--text-sub); text-align: center; margin-bottom: 18px;">
-          회사보유분 잔여호실 분양가 및 모델하우스(홍보관) 방문 예약
+          실입주 부담 완화 취득세 지원 상담 및 홍보관 방문 예약
         </p>
 
-        <form action="#" method="POST" onsubmit="alert('상담 신청이 접수되었습니다. 담당자가 곧 연락드리겠습니다.'); return false;">
+        <form action="#" method="POST" onsubmit="alert('VIP 상담 신청이 정상 접수되었습니다. 담당자가 빠르게 연락드리겠습니다.'); return false;">
           <div class="form-group">
             <label>성명</label>
             <input type="text" class="form-input" placeholder="성함을 입력하세요" required>
@@ -469,7 +498,7 @@
     </div>
   </main>
 
-  <!-- [하단 고정 2] 혜택 문구 + 3단 액션 버튼 -->
+  <!-- [하단 고정 푸터] -->
   <footer class="fixed-footer">
     <div class="footer-benefit-bar">
       <span>★ 1천만원 계약 가능</span> · <span class="highlight">시세대비 4억 이상 저렴!</span> ★
@@ -489,6 +518,31 @@
       </a>
     </div>
   </footer>
+
+  <script>
+    let bgmStarted = false;
+    function startBGMOnce() {
+      if (!bgmStarted) {
+        const audio = document.getElementById('bgmAudio');
+        if (audio) {
+          audio.play().catch(e => console.log('BGM 대기 중'));
+          bgmStarted = true;
+          document.getElementById('bgmBtn').textContent = '🔊';
+        }
+      }
+    }
+    function toggleBGM() {
+      const audio = document.getElementById('bgmAudio');
+      const btn = document.getElementById('bgmBtn');
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = '🔊';
+      } else {
+        audio.pause();
+        btn.textContent = '🔇';
+      }
+    }
+  </script>
 
 </body>
 </html>
